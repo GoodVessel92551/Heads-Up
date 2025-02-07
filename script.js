@@ -3,13 +3,17 @@ const greenFlipMeter = document.getElementById("greenFlipMeter");
 const redFlipMeter = document.getElementById("redFlipMeter");
 
 const gammaElement = document.getElementById("gammaElement");
-const phone = document.getElementById("phone");
-screen.orientation.addEventListener("change", (event) => {
-  const type = event.target.type;
-  const angle = event.target.angle;
-  console.log(`ScreenOrientation change: ${type}, ${angle} degrees.`);
-  phone.style.transform = `rotate(${angle}deg)`;
-});
+
+if (window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', function(event) {
+
+    let gamma = event.gamma || 0;
+    let angle = Math.abs(gamma);
+    angle = Math.round(angle); 
+    document.getElementById('angleDisplay').textContent = angle + "°";
+    document.getElementById('phone').style.transform =
+      'translate(-50%, -100%) rotate(' + gamma + 'deg)';
+  }, true);
 
 
 let gamma_value = 0;

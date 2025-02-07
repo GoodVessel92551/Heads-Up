@@ -29,8 +29,8 @@ body{
 .phone{
     background-color: #3E3D3D;
     border-radius: 16px;
-    width: 280px;
-    height:128px;
+    width: 128px;
+    height:280px;
     transform: rotate(0deg);
     position: absolute;
     top:50%;

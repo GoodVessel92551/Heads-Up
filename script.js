@@ -12,7 +12,7 @@ if (window.DeviceOrientationEvent) {
     angle = Math.round(angle); 
     document.getElementById('angleDisplay').textContent = angle + "°";
     document.getElementById('phone').style.transform =
-      'translate(-50%, -50%) rotate(' + gamma+90 + 'deg)';
+      'translate(-50%, -50%) rotate(' + angle + 'deg)';
   }, true);
 
 }

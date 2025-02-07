@@ -1,0 +1,36 @@
+body{
+    background-color: #2C2C2C;
+}
+
+.flipMeter{
+    position: absolute;
+    height: 300px;
+    width: 8px;
+    border-radius: 16px;
+    background-color: #7F7F7F;
+    top: 50%;
+    right:16px;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+.flipMeter > span{
+    height: 0%;
+    width: 100%;
+    display: block;
+    transition: height .2s;
+}
+
+.greenFlipMeter{
+    background-color: #fff;
+    position: absolute;
+    bottom:50%;
+    border-radius: 16px 16px 0px 0px;
+}
+
+.redFlipMeter{
+    background-color: #fff;
+    position: absolute;
+    top:50%;
+    border-radius: 0px 0px 16px 16px;
+}

@@ -8,7 +8,7 @@ if (window.DeviceOrientationEvent) {
   window.addEventListener('deviceorientation', function(event) {
 
     let gamma = event.gamma || 0;
-    let angle = Math.abs(gamma);
+    let angle = gamma;
     angle = Math.round(angle); 
     document.getElementById('angleDisplay').textContent = angle + "°";
     document.getElementById('phone').style.transform =

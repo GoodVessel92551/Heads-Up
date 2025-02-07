@@ -15,6 +15,8 @@ if (window.DeviceOrientationEvent) {
       'translate(-50%, -100%) rotate(' + gamma + 'deg)';
   }, true);
 
+}
+
 
 let gamma_value = 0;
 function handleOrientation(event) {

@@ -212,6 +212,7 @@ body{
     display: flex;
     gap:8px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .topicsContainer > a{
@@ -224,6 +225,7 @@ body{
     border-radius: 24px;
     text-decoration: none;
     max-width: 350px;
+    min-width: 150px;
 }
 
 .topicsContainer > a:hover{

@@ -1,0 +1,39 @@
+{
+    "DT":{
+        "topic1":{
+            "about":"This is about topic1",
+            "words":[
+                "word1",
+                "word2",
+                "word3"
+            ]
+        },
+        "topic2":{
+            "about":"This is about topic2",
+            "words":[
+                "word1",
+                "word2",
+                "word3"
+            ]
+        }
+    },
+    "Engineering":{
+        "topic1":{
+            "about":"This is about topic1",
+            "words":[
+                "word1",
+                "word2",
+                "word3"
+            ]
+        },
+        "topic2":{
+            "about":"This is about topic2",
+            "words":[
+                "word1",
+                "word2",
+                "word3"
+            ]
+        }
+    }
+    
+}

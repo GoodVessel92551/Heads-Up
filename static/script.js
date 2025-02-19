@@ -32,11 +32,11 @@ const nextWord = () => {
 
   let randomWord = wordsList[Math.floor(Math.random() * wordsList.length)];
   word.innerHTML = randomWord;
-  wordsList = wordsList.filter(word => word !== randomWord);
   if (wordsList.length === 0) {
     window.removeEventListener("deviceorientation", handleOrientation, true);
     word.innerHTML = "Game Over!";
   }
+  wordsList = wordsList.filter(word => word !== randomWord);
 }
 
 const isLandscapeWithCameraLeft = () => {

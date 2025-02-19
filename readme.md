@@ -1,0 +1,2 @@
+# The word game
+The word game is a simple website that helps people revise keywords. It is a online version of Heads Up! This stores the words is a JSON file if you want more word create a pull request or create a issue will the topics and word in the correct format.

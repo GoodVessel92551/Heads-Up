@@ -103,6 +103,7 @@ const handleOrientation = (event) => {
     if (gamma > 50 || gamma <-50){
       turnComplete = false;
       document.body.style.backgroundColor = "#000";
+      document.body.style.backgroundImage = "url(/static/background.png)";
       word.style.color = "#FFFFFF"
     }else if (gamma > 0 && gamma < 50){
       if (!turnComplete){
@@ -111,10 +112,10 @@ const handleOrientation = (event) => {
       }
       turnComplete = true;
       if (angle === 90){
-        document.body.style.backgroundColor = "#FFA9A9";
+        document.body.style.background = "#FFA9A9";
         word.style.color = "#5A2E2E"
       }else{
-        document.body.style.backgroundColor = "#CAFFA9";
+        document.body.style.background = "#CAFFA9";
         word.style.color = "#283A1D"
       }
     }
@@ -125,14 +126,15 @@ const handleOrientation = (event) => {
       }
       turnComplete = true;
       if (angle === 90){
-        document.body.style.backgroundColor = "#CAFFA9";
+        document.body.style.background = "#CAFFA9";
         word.style.color = "#283A1D"
       }else{
-        document.body.style.backgroundColor = "#FFA9A9";
+        document.body.style.background = "#FFA9A9";
         word.style.color = "#5A2E2E"
       }
     }
     else{
       document.body.style.backgroundColor = "#000";
+      document.body.style.backgroundImage = "url(/static/background.png)";
     }
   }

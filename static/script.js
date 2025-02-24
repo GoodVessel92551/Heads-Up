@@ -14,7 +14,13 @@ const subtopic = params.get("subtopic");
 fetch("/static/words.json")
   .then(response => response.json())
   .then(data => {
-    wordsList = data[topic][subtopic].words;
+    topics = data[topic];
+    for (var i = 0; i < topics.length;i++){
+      if (topics[i].title === subtopic){
+        wordsList = topics[i].words;
+        break;
+      }
+    }
   });
 
 const startGame = () => {
@@ -93,7 +99,7 @@ const handleOrientation = (event) => {
     let gamma = event.gamma;
     if (gamma > 50 || gamma <-50){
       turnComplete = false;
-      document.body.style.background = "linear-gradient(296deg, rgba(0, 0, 0, 0.00) 34.23%, rgba(133, 93, 53, 0.20) 63%), linear-gradient(128deg, #242424 11.44%, #3F3021 74.65%)";
+      document.body.style.backgroundColor = "#000";
       word.style.color = "#FFFFFF"
     }else if (gamma > 0 && gamma < 50){
       if (!turnComplete){
@@ -102,10 +108,10 @@ const handleOrientation = (event) => {
       }
       turnComplete = true;
       if (angle === 90){
-        document.body.style.background = "#FFA9A9";
+        document.body.style.backgroundColor = "#FFA9A9";
         word.style.color = "#5A2E2E"
       }else{
-        document.body.style.background = "#CAFFA9";
+        document.body.style.backgroundColor = "#CAFFA9";
         word.style.color = "#283A1D"
       }
     }
@@ -116,14 +122,14 @@ const handleOrientation = (event) => {
       }
       turnComplete = true;
       if (angle === 90){
-        document.body.style.background = "#CAFFA9";
+        document.body.style.backgroundColor = "#CAFFA9";
         word.style.color = "#283A1D"
       }else{
-        document.body.style.background = "#FFA9A9";
+        document.body.style.backgroundColor = "#FFA9A9";
         word.style.color = "#5A2E2E"
       }
     }
     else{
-      document.body.style.background = "linear-gradient(296deg, rgba(0, 0, 0, 0.00) 34.23%, rgba(133, 93, 53, 0.20) 63%), linear-gradient(128deg, #242424 11.44%, #3F3021 74.65%)";
+      document.body.style.backgroundColor = "#000";
     }
   }

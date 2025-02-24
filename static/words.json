@@ -1,102 +1,114 @@
 {
     "DT": {
-        "Materials": {
-            "about": "This topic covers different materials used in design and technology.",
-            "words": [
-                "wood",
-                "metal",
-                "plastic",
-                "composite",
-                "ceramic",
-                "alloy",
-                "fiber",
-                "polymer",
-                "acrylic",
-                "carbon fiber",
-                "biodegradable materials"
-            ]
-        },
-        "Manufacturing Processes": {
-            "about": "This topic explores various processes used in manufacturing products.",
-            "words": [
-                "injection molding",
-                "3D printing",
-                "laser cutting",
-                "CNC machining",
-                "casting",
-                "milling",
-                "drilling",
-                "welding",
-                "forging",
-                "extrusion",
-                "sintering"
-            ]
-        },
-        "Product Design": {
-            "about": "This topic focuses on designing new products considering function and aesthetics.",
-            "words": [
-                "ergonomics",
-                "prototyping",
-                "CAD",
-                "sustainability",
-                "user-centered design",
-                "aesthetics",
-                "functionality",
-                "iteration",
-                "market research",
-                "branding",
-                "design thinking"
-            ]
-        }
+        "icon": "pencil-ruler",
+        "topics":[
+            {
+                "title": "Materials",
+                "about": "This topic covers different materials used in design and technology.",
+                "words": [
+                    "wood",
+                    "metal",
+                    "plastic",
+                    "composite",
+                    "ceramic",
+                    "alloy",
+                    "fiber",
+                    "polymer",
+                    "acrylic",
+                    "carbon fiber",
+                    "biodegradable materials"
+                ]
+            },
+            {
+                "title": "Manufacturing Processes",
+                "about": "This topic explores various processes used in manufacturing products.",
+                "words": [
+                    "injection molding",
+                    "3D printing",
+                    "laser cutting",
+                    "CNC machining",
+                    "casting",
+                    "milling",
+                    "drilling",
+                    "welding",
+                    "forging",
+                    "extrusion",
+                    "sintering"
+                ]
+            },
+            {
+                "title": "Product Design",
+                "about": "This topic focuses on designing new products considering function and aesthetics.",
+                "words": [
+                    "ergonomics",
+                    "prototyping",
+                    "CAD",
+                    "sustainability",
+                    "user-centered design",
+                    "aesthetics",
+                    "functionality",
+                    "iteration",
+                    "market research",
+                    "branding",
+                    "design thinking"
+                ]
+            }
+        ]
     },
     "Engineering": {
-        "Mechanical Engineering": {
-            "about": "This topic covers principles of mechanical systems and machines.",
-            "words": [
-                "thermodynamics",
-                "fluid mechanics",
-                "gear ratios",
-                "kinematics",
-                "tensile strength",
-                "torque",
-                "friction",
-                "vibration analysis",
-                "dynamics",
-                "HVAC systems",
-                "rotational motion"
-            ]
-        },
-        "Electrical Engineering": {
-            "about": "This topic focuses on electrical circuits, power, and electronics.",
-            "words": [
-                "circuit",
-                "voltage",
-                "resistance",
-                "semiconductor",
-                "inductor",
-                "transistor",
-                "capacitor",
-                "power grid",
-                "Ohm’s law",
-                "diode",
-                "AC/DC current"
-            ]
-        },
-        "Civil Engineering": {
-            "about": "This topic deals with the design and construction of infrastructure.",
-            "words": [
-                "structural analysis",
-                "concrete",
-                "foundation",
-                "load-bearing",
-                "reinforcement",
-                "beam",
-                "arch",
-                "suspension bridge",
-                "earthquake-resistant design",
-                "urban planning",
-                "geotechnical engineering"
-            ]
-        }
+        "icon": "wrench",
+        "topics":[
+            {
+                "title": "Mechanical Engineering",
+                "about": "This topic covers principles of mechanical systems and machines.",
+                "words": [
+                    "thermodynamics",
+                    "fluid mechanics",
+                    "gear ratios",
+                    "kinematics",
+                    "tensile strength",
+                    "torque",
+                    "friction",
+                    "vibration analysis",
+                    "dynamics",
+                    "HVAC systems",
+                    "rotational motion"
+                ]
+            },
+            {
+                "title": "Electrical Engineering",
+                "about": "This topic focuses on electrical circuits, power, and electronics.",
+                "words": [
+                    "circuit",
+                    "voltage",
+                    "resistance",
+                    "semiconductor",
+                    "inductor",
+                    "transistor",
+                    "capacitor",
+                    "power grid",
+                    "Ohm’s law",
+                    "diode",
+                    "AC/DC current"
+                ]
+            },
+            {
+                "title": "Civil Engineering",
+                "about": "This topic deals with the design and construction of infrastructure.",
+                "words": [
+                    "structural analysis",
+                    "concrete",
+                    "foundation",
+                    "load-bearing",
+                    "reinforcement",
+                    "beam",
+                    "arch",
+                    "suspension bridge",
+                    "earthquake-resistant design",
+                    "urban planning",
+                    "geotechnical engineering"
+                ]
+            }
+        ]
     }
 }

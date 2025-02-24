@@ -1,10 +1,14 @@
 :root{
-    --textGradient: linear-gradient(91deg, #FFF 0.8%, #E9CDAD 90.89%);
+    --textGradient: linear-gradient(91deg, #B3ADE9 0.8%, #FFF 49%, #E9ADAD 90.89%);
 }
 
 
 body{
-    background: linear-gradient(296deg, rgba(0, 0, 0, 0.00) 34.23%, rgba(133, 93, 53, 0.20) 63%), linear-gradient(128deg, #242424 11.44%, #3F3021 74.65%);
+    background-color: #000;
+    background-image: url(/static/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     padding: 0px;
     margin: 0px;
     height: 100vh;
@@ -36,6 +40,8 @@ body{
     display: flex;
     flex-direction: column;
     gap:16px;
+    justify-content: center;
+    align-items: center;
 }
 
 .landingPageTextContainer > h1{
@@ -47,6 +53,17 @@ body{
     background-clip: text;
     font-weight: 600;
     text-align: center;
+}
+
+.landingPageTextContainer > p{
+    font-size: 14px;
+    text-align: center;
+    max-width: 450px;
+    color: #A5A5A5;
+}
+
+.landingPageTextContainer > p > span{
+    color: #fff;
 }
 
 
@@ -136,23 +153,28 @@ body{
 }
 
 .subjectButtons{
-    width:100%;
     display: flex;
     justify-content: center;
     gap: 8px;
     flex-wrap: wrap;
+    background-color: #202020;
+    border:1px solid #383838;
+    border-radius: 30px;
+    max-width: calc(100% - 32px); /* Subtracting padding from viewport width */
+    padding: 8px;
+    position: absolute;
+    bottom: 16px;
+    left:50%;
+    transform: translateX(-50%);
 }
-
 .subjectButtons > button, .button{
     white-space: nowrap;
     border-radius: 30px;
-    border: 1px solid #4e3a27;
-    background: #261f194d;
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
-    color:#FFD8B2;
+    border: 1px solid #363636;
+    background: #1B1B1B;
+    color:#fff;
     padding: 11px 21px;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 16px;
     transition: .15s all ease;
     cursor: pointer;
@@ -161,14 +183,20 @@ body{
     justify-content: center;
     gap:8px;
     text-decoration: none;
+    
+}
+
+.subjectButtons > button > i, .button > i{
+    font-size: 16px;
+    color:#FFA47C;
 }
 
 .subjectButtons > button:hover, .button:hover{
-    background-color: #261f197a;
+    background-color: #1f1f1f;
 }
 
 .subjectButtons > button:active, .button:active{
-    border-color: #614831;
+    border-color: rgb(56, 56, 56);
 }
 
 .githubButton{

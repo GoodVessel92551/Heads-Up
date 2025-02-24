@@ -14,8 +14,10 @@ const subtopic = params.get("subtopic");
 fetch("/static/words.json")
   .then(response => response.json())
   .then(data => {
-    topics = data[topic];
+    topics = data[topic].topics;
     for (var i = 0; i < topics.length;i++){
+      console.log(topics[i].title);
+      console.log(subtopic)
       if (topics[i].title === subtopic){
         wordsList = topics[i].words;
         break;

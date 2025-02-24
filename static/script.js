@@ -18,6 +18,7 @@ fetch("/static/words.json")
     for (var i = 0; i < topics.length;i++){
       if (topics[i].title === subtopic){
         wordsList = topics[i].words;
+        console.log(wordsList);
         break;
       }
     }

@@ -1,10 +1,19 @@
 const greenFlipMeter = document.getElementById("greenFlipMeter");
 const word = document.getElementById("word");
 const startGameButton = document.getElementById("startGameButton");
+const gameOverContainer = document.getElementById("gameOverContainer");
+const gameOverTime = document.getElementById("gameOverTime");
+const gameOverScore = document.getElementById("gameOverScore");
+const gameOverStreak = document.getElementById("gameOverStreak");
 let turnComplete = false;
 let wordsList = [];
 let canChangeWord = true; // Cooldown flag
 let gameStarted = false;
+let startTime = 0;
+let endTime = 0;
+let totalPoints = 0;
+let currentPoints = 0;
+let streak = 0
 
 const params = new URLSearchParams(window.location.search);
 const topic = params.get("topic");
@@ -26,29 +35,55 @@ fetch("/static/words.json")
   });
 
 const startGame = () => {
+  startTime = new Date().getTime();
   console.log(wordsList);
   goFullScreen();
   startGameButton.style.display = "none";
-  nextWord();
+  nextWord(false);
   gameStarted = true;
+  console.log("Game started");
   window.addEventListener("deviceorientation", handleOrientation, true);
 }
 
-const nextWord = () => {
+const nextWord = (correct) => {
   if (!canChangeWord) return; // Prevent function execution if cooldown is active
   canChangeWord = false; // Set cooldown flag to false
   setTimeout(() => canChangeWord = true, 1000); // Reset cooldown flag after 1 second
 
   let randomWord = wordsList[Math.floor(Math.random() * wordsList.length)];
   word.innerHTML = randomWord;
+  if (correct){
+    totalPoints += 1
+    currentPoints += 1
+    streak += 1
+  }else if (!gameStarted) {
+    return
+  }else{
+    totalPoints += 1
+    streak = 0
+  }
+
   if (wordsList.length === 0) {
+    console.log("No more words left");
     window.removeEventListener("deviceorientation", handleOrientation, true);
-    word.innerHTML = "Game Over!";
+    word.innerHTML = "";
+    document.body.style.backgroundColor = "#000";
+    document.body.style.backgroundImage = "url(/static/background.png)";
+    word.style.color = "#FFFFFF"
+    endTime = new Date().getTime();
+    const totalSeconds = Math.floor((endTime - startTime) / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    gameOverTime.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    gameOverContainer.style.display = "flex";
+    gameOverScore.innerHTML = `${currentPoints}/${totalPoints}`;
+    gameOverStreak.innerHTML = streak;
   }
   wordsList = wordsList.filter(word => word !== randomWord);
 }
 
 const isLandscapeWithCameraLeft = () => {
+  console.log(screen.orientation.angle)
   if (screen.orientation) {
     return screen.orientation.angle
   }
@@ -71,7 +106,9 @@ function goFullScreen() {
 
 let gamma_value = 0;
 const handleOrientation = (event) => {
+
     const angle = isLandscapeWithCameraLeft()
+    console.log(angle)
     if (angle === 0 || angle === 180) {
       return
     }
@@ -106,32 +143,39 @@ const handleOrientation = (event) => {
       document.body.style.backgroundImage = "url(/static/background.png)";
       word.style.color = "#FFFFFF"
     }else if (gamma > 0 && gamma < 50){
+      let isCorrect
+      if (angle === 90){
+        document.body.style.background = "#FFA9A9";
+        word.style.color = "#5A2E2E"
+        isCorrect = false;
+      }else{
+        document.body.style.background = "#CAFFA9";
+        word.style.color = "#283A1D"
+        isCorrect = true;
+      }
+      console.log(turnComplete)
       if (!turnComplete){
-        nextWord();
+        nextWord(isCorrect);
         navigator.vibrate(400);
       }
       turnComplete = true;
-      if (angle === 90){
-        document.body.style.background = "#FFA9A9";
-        word.style.color = "#5A2E2E"
-      }else{
-        document.body.style.background = "#CAFFA9";
-        word.style.color = "#283A1D"
-      }
     }
     else if (gamma < 0 && gamma > -50){
+      let isCorrect
+      if (angle === 90){
+        document.body.style.background = "#CAFFA9";
+        word.style.color = "#283A1D"
+        isCorrect = true;
+      }else{
+        document.body.style.background = "#FFA9A9";
+        word.style.color = "#5A2E2E"
+        isCorrect = false;
+      }
       if (!turnComplete){
-        nextWord();
+        nextWord(isCorrect);
         navigator.vibrate(200);
       }
       turnComplete = true;
-      if (angle === 90){
-        document.body.style.background = "#CAFFA9";
-        word.style.color = "#283A1D"
-      }else{
-        document.body.style.background = "#FFA9A9";
-        word.style.color = "#5A2E2E"
-      }
     }
     else{
       document.body.style.backgroundColor = "#000";

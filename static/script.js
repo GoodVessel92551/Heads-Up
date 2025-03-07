@@ -20,6 +20,18 @@ const params = new URLSearchParams(window.location.search);
 const topic = params.get("topic");
 const subtopic = params.get("subtopic");
 
+function goFullScreen() {
+  let elem = document.documentElement; // Fullscreen for the entire page
+  if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { // Firefox
+      elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+      elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { // IE/Edge
+      elem.msRequestFullscreen();
+  }
+}
 
 fetch("/static/words.json")
   .then(response => response.json())
@@ -91,19 +103,6 @@ const isLandscapeWithCameraLeft = () => {
     return screen.orientation.angle
   }
   return 0
-}
-
-function goFullScreen() {
-  let elem = document.documentElement; // Fullscreen for the entire page
-  if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) { // Firefox
-      elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
-      elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { // IE/Edge
-      elem.msRequestFullscreen();
-  }
 }
 
 

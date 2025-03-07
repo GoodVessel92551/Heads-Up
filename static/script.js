@@ -14,6 +14,7 @@ let endTime = 0;
 let totalPoints = 0;
 let currentPoints = 0;
 let streak = 0
+let longestStreak = 0
 
 const params = new URLSearchParams(window.location.search);
 const topic = params.get("topic");
@@ -56,6 +57,8 @@ const nextWord = (correct) => {
     totalPoints += 1
     currentPoints += 1
     streak += 1
+    if (streak > longestStreak){
+      longestStreak = streak
   }else if (!gameStarted) {
     return
   }else{

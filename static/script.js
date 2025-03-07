@@ -184,4 +184,4 @@ const handleOrientation = (event) => {
       document.body.style.backgroundColor = "#000";
       document.body.style.backgroundImage = "url(/static/background.png)";
     }
-  }
+}}

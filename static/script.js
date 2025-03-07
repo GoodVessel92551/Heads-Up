@@ -95,7 +95,7 @@ const nextWord = (correct) => {
     gameOverStreak.innerHTML = streak;
   }
   wordsList = wordsList.filter(word => word !== randomWord);
-}
+}}
 
 const isLandscapeWithCameraLeft = () => {
   console.log(screen.orientation.angle)
@@ -183,4 +183,4 @@ const handleOrientation = (event) => {
       document.body.style.backgroundColor = "#000";
       document.body.style.backgroundImage = "url(/static/background.png)";
     }
-}}
+}

@@ -145,7 +145,7 @@ const handleOrientation = (event) => {
       document.body.style.backgroundImage = "url(/static/background.png)";
       word.style.color = "#FFFFFF"
     }else if (gamma > 0 && gamma < 50){
-      let isCorrect
+      let isCorrect = null
       if (angle === 90){
         document.body.style.background = "#FFA9A9";
         word.style.color = "#5A2E2E"
@@ -155,7 +155,6 @@ const handleOrientation = (event) => {
         word.style.color = "#283A1D"
         isCorrect = true;
       }
-      console.log(turnComplete)
       if (!turnComplete){
         nextWord(isCorrect);
         navigator.vibrate(400);

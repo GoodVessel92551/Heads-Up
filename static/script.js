@@ -65,17 +65,18 @@ const nextWord = (correct) => {
 
   let randomWord = wordsList[Math.floor(Math.random() * wordsList.length)];
   word.innerHTML = randomWord;
-  if (correct){
-    totalPoints += 1
-    currentPoints += 1
-    streak += 1
-    if (streak > longestStreak){
-      longestStreak = streak
-  }else if (!gameStarted) {
-    return
-  }else{
-    totalPoints += 1
-    streak = 0
+  if (correct) {
+    totalPoints += 1;
+    currentPoints += 1;
+    streak += 1;
+    if (streak > longestStreak) {
+      longestStreak = streak;
+    }
+  } else if (!gameStarted) {
+    return;
+  } else {
+    totalPoints += 1;
+    streak = 0;
   }
 
   if (wordsList.length === 0) {
@@ -84,7 +85,7 @@ const nextWord = (correct) => {
     word.innerHTML = "";
     document.body.style.backgroundColor = "#000";
     document.body.style.backgroundImage = "url(/static/background.png)";
-    word.style.color = "#FFFFFF"
+    word.style.color = "#FFFFFF";
     endTime = new Date().getTime();
     const totalSeconds = Math.floor((endTime - startTime) / 1000);
     const minutes = Math.floor(totalSeconds / 60);
@@ -95,7 +96,7 @@ const nextWord = (correct) => {
     gameOverStreak.innerHTML = streak;
   }
   wordsList = wordsList.filter(word => word !== randomWord);
-}}
+}
 
 const isLandscapeWithCameraLeft = () => {
   console.log(screen.orientation.angle)
@@ -138,47 +139,42 @@ const handleOrientation = (event) => {
         greenFlipMeter.style.bottom = (Math.abs(gammaPercent)) + "%";
       }
     }
+    
     let gamma = event.gamma;
-    if (gamma > 50 || gamma <-50){
+    if (gamma > 50 || gamma < -50){
       turnComplete = false;
       document.body.style.backgroundColor = "#000";
       document.body.style.backgroundImage = "url(/static/background.png)";
-      word.style.color = "#FFFFFF"
-    }else if (gamma > 0 && gamma < 50){
-      let isCorrect = null
-      if (angle === 90){
-        document.body.style.background = "#FFA9A9";
-        word.style.color = "#5A2E2E"
-        isCorrect = false;
-      }else{
-        document.body.style.background = "#CAFFA9";
-        word.style.color = "#283A1D"
-        isCorrect = true;
-      }
+      word.style.color = "#FFFFFF";
+    } else if (gamma > 0 && gamma < 50){
+      // Phone tilted right
+      let isCorrect;
+      
+      // Consistent behavior regardless of which way the phone is held
+      document.body.style.background = "#CAFFA9";
+      word.style.color = "#283A1D";
+      isCorrect = true;
+      
       if (!turnComplete){
         nextWord(isCorrect);
         navigator.vibrate(400);
       }
       turnComplete = true;
-    }
-    else if (gamma < 0 && gamma > -50){
-      let isCorrect
-      if (angle === 90){
-        document.body.style.background = "#CAFFA9";
-        word.style.color = "#283A1D"
-        isCorrect = true;
-      }else{
-        document.body.style.background = "#FFA9A9";
-        word.style.color = "#5A2E2E"
-        isCorrect = false;
-      }
+    } else if (gamma < 0 && gamma > -50){
+      // Phone tilted left
+      let isCorrect;
+      
+      // Consistent behavior regardless of which way the phone is held
+      document.body.style.background = "#FFA9A9";
+      word.style.color = "#5A2E2E";
+      isCorrect = false;
+      
       if (!turnComplete){
         nextWord(isCorrect);
         navigator.vibrate(200);
       }
       turnComplete = true;
-    }
-    else{
+    } else {
       document.body.style.backgroundColor = "#000";
       document.body.style.backgroundImage = "url(/static/background.png)";
     }

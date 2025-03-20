@@ -15,6 +15,7 @@ let totalPoints = 0;
 let currentPoints = 0;
 let streak = 0
 let longestStreak = 0
+let wakeLock = null; // Variable to store the wake lock
 
 const params = new URLSearchParams(window.location.search);
 const topic = params.get("topic");
@@ -30,6 +31,42 @@ function goFullScreen() {
       elem.webkitRequestFullscreen();
   } else if (elem.msRequestFullscreen) { // IE/Edge
       elem.msRequestFullscreen();
+  }
+}
+
+// Function to request a wake lock to keep the screen on
+async function requestWakeLock() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+      console.log('Wake Lock is active');
+      
+      // Add a listener to reacquire the wake lock if the page becomes visible again
+      document.addEventListener('visibilitychange', async () => {
+        if (wakeLock !== null && document.visibilityState === 'visible' && gameStarted) {
+          wakeLock = await navigator.wakeLock.request('screen');
+          console.log('Wake Lock reacquired');
+        }
+      });
+    } else {
+      console.log('Wake Lock API not supported');
+    }
+  } catch (err) {
+    console.error(`Wake Lock error: ${err.name}, ${err.message}`);
+  }
+}
+
+// Function to release the wake lock
+function releaseWakeLock() {
+  if (wakeLock !== null) {
+    wakeLock.release()
+      .then(() => {
+        console.log('Wake Lock released');
+        wakeLock = null;
+      })
+      .catch((err) => {
+        console.error(`Wake Lock release error: ${err.name}, ${err.message}`);
+      });
   }
 }
 
@@ -51,6 +88,7 @@ const startGame = () => {
   startTime = new Date().getTime();
   console.log(wordsList);
   goFullScreen();
+  requestWakeLock(); // Request wake lock when game starts
   startGameButton.style.display = "none";
   nextWord(false);
   gameStarted = true;
@@ -94,6 +132,7 @@ const nextWord = (correct) => {
     gameOverContainer.style.display = "flex";
     gameOverScore.innerHTML = `${currentPoints}/${totalPoints}`;
     gameOverStreak.innerHTML = streak;
+    releaseWakeLock(); // Release wake lock when game ends
   }
   wordsList = wordsList.filter(word => word !== randomWord);
 }
